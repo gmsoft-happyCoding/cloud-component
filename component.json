@@ -1,0 +1,7 @@
+{
+  "version": "0.0.2",
+  "description": "用于加载 component registry 中注册的组件",
+  "name": "cloud-component",
+  "main": "dist/index.amd.js",
+  "dependencies": ["lodash"]
+}
