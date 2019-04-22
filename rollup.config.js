@@ -19,8 +19,17 @@ export default {
       sourcemap: true,
     },
     {
-      file: 'dist/index.amd.js',
-      format: 'amd',
+      file: 'dist/index.umd.js',
+      name: 'CloudComponent',
+      format: 'umd',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        antd: 'antd',
+        lodash: '_',
+        'styled-components': 'styled',
+        axios: 'axios',
+      },
       sourcemap: true,
     },
     {
