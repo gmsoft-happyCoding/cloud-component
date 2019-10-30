@@ -4,6 +4,7 @@ import external from 'rollup-plugin-peer-deps-external';
 // import postcss from 'rollup-plugin-postcss-modules'
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
 
@@ -52,5 +53,8 @@ export default {
       clean: true,
     }),
     commonjs(),
+    copy({
+      targets: [{ src: 'src/**/*.d.ts', dest: 'dist' }],
+    }),
   ],
 };

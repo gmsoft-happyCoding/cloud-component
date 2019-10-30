@@ -31,9 +31,7 @@ const createLoader = (moduleLoader: any, registrySever: string) => ({
       return await moduleLoader.import(url);
     }
     // requirejs
-    else {
-      return await new Promise((resolve, reject) => moduleLoader([url], resolve, reject));
-    }
+    return await new Promise((resolve, reject) => moduleLoader([url], resolve, reject));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('loadComponent Error =>', error);

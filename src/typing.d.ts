@@ -13,7 +13,7 @@ export interface RegistryInfo {
 }
 
 export interface SuspenseProps {
-  fallback?: NonNullable<ReactNode> | null;
+  fallback?: ReactNode;
 }
 
 export interface AnyProps {
