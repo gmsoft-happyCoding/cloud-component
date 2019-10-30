@@ -43,6 +43,26 @@ export { loadComponent };
 export default CloudComponent;
 ```
 
+---
+
+#### custom loading
+```tsx
+<CloudComponent name="project/component" fallback={<CustomLoading />} />
+```
+
+---
+
+
+#### custom loading by ConfigProvider
+```tsx
+import {CloudComponentConfigProvider} from 'cloud-component';
+
+<CloudComponentConfigProvider fallback={<CustomLoading />} >
+    <CloudComponent name="project/component1" />
+    <CloudComponent name="project/component2" />
+</CloudComponentConfigProvider>
+```
+
 ## License
 
 MIT © [angular-moon](https://github.com/angular-moon)
