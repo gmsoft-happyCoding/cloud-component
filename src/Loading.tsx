@@ -1,7 +1,7 @@
-import React from "react";
-import { Spin } from "antd";
-import { SpinProps } from "antd/es/spin";
-import styled from "styled-components";
+import React from 'react';
+import { Spin } from 'antd';
+import { SpinProps } from 'antd/es/spin';
+import styled from 'styled-components';
 
 const Wrap = styled.div`
   text-align: center;
@@ -29,5 +29,5 @@ const Loading = (props: Props) => {
   );
 };
 
-Loading.defaultProps = { tip: "数据加载中" };
+Loading.defaultProps = { tip: '数据加载中' };
 export default Loading;
