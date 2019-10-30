@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface RegistryInfo {
   /**
    * 组件名字
@@ -8,6 +10,10 @@ export interface RegistryInfo {
    * 组件加载的url
    */
   url?: string;
+}
+
+export interface SuspenseProps {
+  fallback?: NonNullable<ReactNode> | null;
 }
 
 export interface AnyProps {
