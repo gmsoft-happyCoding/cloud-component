@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c -w"
+    "start": "rollup -c -w",
+    "pub": "rollup -c & npm publish"
   },
   "dependencies": {},
   "peerDependencies": {
