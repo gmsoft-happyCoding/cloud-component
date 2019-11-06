@@ -1,4 +1,4 @@
-import React, { lazy, useMemo, ReactNode } from 'react';
+import React, { lazy, useMemo, ReactNode, forwardRef } from 'react';
 import { flowRight } from 'lodash';
 import { RegistryInfo, AnyProps, SuspenseProps } from './typing.d';
 import wrapSuspense from './wrapSuspense';
@@ -36,13 +36,19 @@ function create(moduleLoader: any, registrySever: string) {
    * name = project/component
    * 优先级: url > name
    */
-  const CloudComponent = (props: RegistryInfo & SuspenseProps & AnyProps) => {
-    const { name, url, fallback } = props;
-    const Component = useMemo(() => loadComponent({ name, url, fallback }), [name, url, fallback]);
-    // delete component when unmount
-    // React.useEffect(() => () => SystemJS.delete(url), []);
-    return <Component {...props} />;
-  };
+  const CloudComponent = forwardRef(
+    (props: RegistryInfo & SuspenseProps & AnyProps, ref: React.Ref<any>) => {
+      const { name, url, fallback } = props;
+      const Component = useMemo(() => loadComponent({ name, url, fallback }), [
+        name,
+        url,
+        fallback,
+      ]);
+      // delete component when unmount
+      // React.useEffect(() => () => SystemJS.delete(url), []);
+      return <Component {...props} ref={ref} />;
+    }
+  );
 
   return { loadComponent, CloudComponent };
 }
