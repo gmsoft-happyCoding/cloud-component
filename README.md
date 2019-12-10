@@ -2,7 +2,7 @@
 
 > 用于远程加载 component registry 中注册的组件
 
-[![NPM](https://img.shields.io/npm/v/cloud-component.svg)](https://www.npmjs.com/package/search-page)
+[![NPM](https://img.shields.io/npm/v/cloud-component.svg)](https://www.npmjs.com/package/cloud-component)
 
 ## Install
 
