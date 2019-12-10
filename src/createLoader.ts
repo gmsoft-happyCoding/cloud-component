@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { RegistryInfo } from './typing.d';
+import { RegistryInfo, UrlMapper } from './typing.d';
 import createError from './createError';
 
 // 创建组件加载器
-const createLoader = (moduleLoader: any, registrySever: string) => ({
+const createLoader = (moduleLoader: any, registrySever: string, mapper?: UrlMapper) => ({
   name,
   url,
 }: RegistryInfo) => async () => {
@@ -15,7 +15,22 @@ const createLoader = (moduleLoader: any, registrySever: string) => ({
   }
 
   try {
-    if (!url && name) {
+    /**
+     * 优先使用 url
+     */
+    let componentUrl = url;
+
+    /**
+     * 尝试在 mapper 中查找 url
+     */
+    if (!componentUrl && name && mapper) {
+      componentUrl = mapper[name];
+    }
+
+    /**
+     * 通过 registry api 获取 url
+     */
+    if (!componentUrl && name) {
       const [projectName, componentName] = name.split('/');
       const { data } = await axios.get(
         `/api/projects/${projectName}/components/${componentName}/url`,
@@ -23,15 +38,15 @@ const createLoader = (moduleLoader: any, registrySever: string) => ({
           baseURL: registrySever,
         }
       );
-      // eslint-disable-next-line prefer-destructuring
-      url = data.url;
+
+      componentUrl = data.url;
     }
     // Systemjs
     if (moduleLoader.import && typeof moduleLoader.import === 'function') {
-      return await moduleLoader.import(url);
+      return await moduleLoader.import(componentUrl);
     }
     // requirejs
-    return await new Promise((resolve, reject) => moduleLoader([url], resolve, reject));
+    return await new Promise((resolve, reject) => moduleLoader([componentUrl], resolve, reject));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('loadComponent Error =>', error);

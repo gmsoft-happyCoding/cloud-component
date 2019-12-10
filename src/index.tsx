@@ -1,6 +1,6 @@
 import React, { lazy, useMemo, ReactNode, forwardRef } from 'react';
 import { flowRight } from 'lodash';
-import { RegistryInfo, AnyProps, SuspenseProps } from './typing.d';
+import { RegistryInfo, AnyProps, SuspenseProps, UrlMapper } from './typing.d';
 import wrapSuspense from './wrapSuspense';
 import createLoader from './createLoader';
 import { ConfigContext, ConfigConsumerProps } from './context';
@@ -16,20 +16,16 @@ export const CloudComponentConfigProvider = ({
   <ConfigContext.Provider value={restProps}>{children}</ConfigContext.Provider>
 );
 
-function create(moduleLoader: any, registrySever: string) {
-  const loader = createLoader(moduleLoader, registrySever);
+function create(moduleLoader: any, registrySever: string, mapper?: UrlMapper) {
+  const loader = createLoader(moduleLoader, registrySever, mapper);
 
   /**
    * 通过 url or name 加载组件
    * name = project/component
    * 优先级: url > name
    */
-  const loadComponent = ({ name, url, fallback }: RegistryInfo & SuspenseProps) =>
-    flowRight(
-      wrapSuspense,
-      lazy,
-      loader
-    )({ name, url, fallback });
+  const loadComponent = ({ name, url }: RegistryInfo) =>
+    flowRight(wrapSuspense, lazy, loader)({ name, url });
 
   /**
    * 通过 prop.url or prop.name 加载组件
@@ -38,12 +34,8 @@ function create(moduleLoader: any, registrySever: string) {
    */
   const CloudComponent = forwardRef(
     (props: RegistryInfo & SuspenseProps & AnyProps, ref: React.Ref<any>) => {
-      const { name, url, fallback } = props;
-      const Component = useMemo(() => loadComponent({ name, url, fallback }), [
-        name,
-        url,
-        fallback,
-      ]);
+      const { name, url } = props;
+      const Component = useMemo(() => loadComponent({ name, url }), [name, url]);
       // delete component when unmount
       // React.useEffect(() => () => SystemJS.delete(url), []);
       return <Component {...props} ref={ref} />;

@@ -12,6 +12,10 @@ export interface RegistryInfo {
   url?: string;
 }
 
+export interface UrlMapper {
+  [name: string]: string;
+}
+
 export interface SuspenseProps {
   fallback?: ReactNode;
 }
