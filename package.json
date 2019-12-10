@@ -37,8 +37,8 @@
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "@types/styled-components": "^4.1.12",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
     "antd": "^3.16.1",
     "axios": "^0.18.1",
     "babel-core": "7.0.0-bridge.0",
@@ -67,7 +67,16 @@
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
     "styled-components": "^4.2.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.7.2",
+    "eslint": "6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-loader": "3.0.2",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0"
   },
   "files": [
     "dist"
