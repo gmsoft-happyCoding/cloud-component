@@ -14,6 +14,23 @@ const createLoader = (moduleLoader: any, registrySever: string, mapper?: UrlMapp
     return createError(error);
   }
 
+  /**
+   * 如果没有指定moduleLoader
+   * 在全局变量中查找合适的moduleLoader
+   */
+  if (!moduleLoader) {
+    if (window.System) {
+      moduleLoader = window.System;
+    } else if (window.require) {
+      moduleLoader = window.require;
+    } else {
+      const error = '没有指定moduleLoader, 在全局变量中也没有找到适合的moduleLoader!';
+      // eslint-disable-next-line no-console
+      console.error('moduleLoader Error =>', error);
+      throw new Error(error);
+    }
+  }
+
   try {
     /**
      * 优先使用 url
