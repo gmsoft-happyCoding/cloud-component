@@ -1,6 +1,6 @@
 {
   "name": "cloud-component",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "用于加载 component registry 中注册的组件",
   "author": "angular-moon",
   "license": "MIT",
