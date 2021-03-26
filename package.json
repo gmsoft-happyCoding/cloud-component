@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -20,7 +21,9 @@
     "start": "rollup -c -w",
     "pub": "rollup -c & npm publish"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/lodash": "^4.14.168"
+  },
   "peerDependencies": {
     "antd": "^3.15.1",
     "axios": "^0.18.1",
@@ -51,6 +54,15 @@
     "babel-plugin-styled-components": "^1.9.2",
     "babel-preset-react-app": "^6.1.0",
     "cross-env": "^5.1.4",
+    "eslint": "6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-loader": "3.0.2",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "gh-pages": "^1.2.0",
     "history": "^4.9.0",
     "ramda": "^0.26.1",
@@ -67,16 +79,7 @@
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
     "styled-components": "^4.2.0",
-    "typescript": "^3.7.2",
-    "eslint": "6.7.2",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-react-app": "^5.0.2",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-loader": "3.0.2",
-    "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.17.0",
-    "eslint-plugin-react-hooks": "^2.3.0"
+    "typescript": "^3.7.2"
   },
   "files": [
     "dist"

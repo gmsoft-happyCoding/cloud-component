@@ -1,4 +1,4 @@
-import React, { lazy, useMemo, ReactNode, forwardRef } from 'react';
+import React, { lazy, useMemo, ReactNode, forwardRef, ReactElement } from 'react';
 import { flowRight } from 'lodash';
 import { RegistryInfo, AnyProps, SuspenseProps, UrlMapper } from './typing.d';
 import wrapSuspense from './wrapSuspense';
@@ -16,6 +16,12 @@ export const CloudComponentConfigProvider = ({
   <ConfigContext.Provider value={restProps}>{children}</ConfigContext.Provider>
 );
 
+export interface CloudComponentI {
+  <P, T = any>(props: RegistryInfo & SuspenseProps & P & { ref?: React.Ref<T> }): ReactElement<
+    P
+  > | null;
+}
+
 function create(moduleLoader: any, registrySever: string, mapper?: UrlMapper) {
   const loader = createLoader(moduleLoader, registrySever, mapper);
 
@@ -32,7 +38,7 @@ function create(moduleLoader: any, registrySever: string, mapper?: UrlMapper) {
    * name = project/component
    * 优先级: url > name
    */
-  const CloudComponent = forwardRef(
+  const CloudComponent: CloudComponentI = forwardRef(
     (props: RegistryInfo & SuspenseProps & AnyProps, ref: React.Ref<any>) => {
       const { name, url, ...restProps } = props;
       const Component = useMemo(() => loadComponent({ name, url }), [name, url]);
