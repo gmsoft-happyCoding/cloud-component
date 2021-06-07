@@ -14,7 +14,7 @@ const wrapSuspense = (Component: React.LazyExoticComponent<any>) =>
       if (context && context.fallback !== undefined) {
         return context.fallback;
       }
-      return <Loading tip="加载中..." />;
+      return <Loading />;
     }, [context, fallback]);
 
     return (
