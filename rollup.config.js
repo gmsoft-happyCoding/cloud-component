@@ -26,7 +26,6 @@ export default {
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        antd: 'antd',
         lodash: '_',
         'styled-components': 'styled',
         axios: 'axios',
