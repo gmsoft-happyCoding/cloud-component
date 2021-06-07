@@ -1,6 +1,6 @@
 {
   "name": "cloud-component-for-material",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "用于加载 component registry 中注册的组件（兼容material-ui）",
   "author": "angular-moon",
   "license": "MIT",
