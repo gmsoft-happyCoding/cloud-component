@@ -96,12 +96,14 @@ export default CloudComponent;
 
 ---
 
-#### custom loading by ConfigProvider
+#### custom loading and error by ConfigProvider
 
 ```tsx
 import { CloudComponentConfigProvider } from 'cloud-component';
 
-<CloudComponentConfigProvider fallback={<CustomLoading />}>
+const ErrorComponent = ({errorMessage}) => <Alert type="error">{errorMessage}</Alert>
+
+<CloudComponentConfigProvider fallback={<CustomLoading />} ErrorComponent={ErrorComponent}>
   <CloudComponent name="project/component1" />
   <CloudComponent name="project/component2" />
 </CloudComponentConfigProvider>;
