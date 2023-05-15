@@ -58,6 +58,12 @@ const createLoader = (moduleLoader: any, registrySever: string, mapper?: UrlMapp
 
       componentUrl = data.url;
     }
+
+    /**
+     * why return await promise
+     * 为了捕获加载失败的异常
+     * https://stackoverflow.com/questions/38708550/difference-between-return-await-promise-and-return-promise
+     */
     // Systemjs
     if (moduleLoader.import && typeof moduleLoader.import === 'function') {
       return await moduleLoader.import(componentUrl);

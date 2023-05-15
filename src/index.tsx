@@ -1,5 +1,5 @@
 import React, { lazy, useMemo, ReactNode, forwardRef, ReactElement } from 'react';
-import { flowRight } from 'lodash';
+import { flowRight, memoize } from 'lodash';
 import { RegistryInfo, AnyProps, SuspenseProps, UrlMapper } from './typing.d';
 import wrapSuspense from './wrapSuspense';
 import createLoader from './createLoader';
@@ -30,8 +30,13 @@ function create(moduleLoader: any, registrySever: string, mapper?: UrlMapper) {
    * name = project/component
    * 优先级: url > name
    */
-  const loadComponent = ({ name, url }: RegistryInfo) =>
+  const _loadComponent = ({ name, url }: RegistryInfo) =>
     flowRight(wrapSuspense, lazy, loader)({ name, url });
+
+  /**
+   * 缓存加载过的组件
+   */
+  const loadComponent = memoize(_loadComponent, JSON.stringify);
 
   /**
    * 通过 prop.url or prop.name 加载组件
