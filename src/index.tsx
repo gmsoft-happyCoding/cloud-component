@@ -47,8 +47,7 @@ function create(moduleLoader: any, registrySever: string, mapper?: UrlMapper) {
     (props: RegistryInfo & SuspenseProps & AnyProps, ref: React.Ref<any>) => {
       const { name, url, ...restProps } = props;
       const Component = useMemo(() => loadComponent({ name, url }), [name, url]);
-      // delete component when unmount
-      // React.useEffect(() => () => SystemJS.delete(url), []);
+
       return <Component {...restProps} ref={ref} />;
     }
   );

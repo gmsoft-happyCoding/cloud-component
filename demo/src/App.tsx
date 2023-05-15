@@ -21,18 +21,18 @@ const App = () => {
    */
   useRestore(stateContainer._history);
 
-  const Error = ({ errorMessage }) => (
-    <div style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</div>
-  );
+  // const Error = ({ errorMessage }) => (
+  //   <div style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</div>
+  // );
 
   return (
     <Provider store={stateContainer._store}>
       <Router history={stateContainer._history}>
-        <CloudComponentConfigProvider ErrorComponent={Error}>
+        <CloudComponentConfigProvider>
           <WhatToEat defaultMode={Mode.DRAW} />
           <CloudWhatToEat />
           {/* 通过组件名字 从 registry.xcjdev1.gm 加载 */}
-          <CloudComponent name="test-project/WhatToEat" defaultMode="search" />
+          <CloudComponent name="test-project/WhatToEat1" defaultMode="search" />
         </CloudComponentConfigProvider>
       </Router>
     </Provider>

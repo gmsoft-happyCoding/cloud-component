@@ -1,14 +1,9 @@
-import { useResponseInterceptor } from './util';
-import { showNetworkError, stateContainer } from '@/utils';
-import { axiosSSOInterceptor } from '@gmsoft/auth-sdk';
+import { useRequestInterceptor, useResponseInterceptor } from './util';
+import { showNetworkError } from '@/utils';
+import { axiosTokenInterceptor } from '@gmsoft/auth-sdk';
 
-useResponseInterceptor(
-  undefined,
-  axiosSSOInterceptor({
-    djcGatewayBaseUrl: process.env.REACT_APP_DJC_GATEWAY_BASE,
-    dispatch: stateContainer._store.dispatch,
-  })
-);
+// @ts-ignore
+useRequestInterceptor(axiosTokenInterceptor());
 
 const errorHandler = error => {
   showNetworkError(error);
