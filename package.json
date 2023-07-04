@@ -22,26 +22,26 @@
     "pub": "rollup -c & npm publish"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.168"
+    "@types/lodash": "^4.14.119"
   },
   "peerDependencies": {
-    "axios": "^0.18.1",
-    "lodash": "^4.17.11",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "styled-components": "^4.2.0"
+    "axios": "0.24.0",
+    "lodash": "^4.17.15",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@svgr/rollup": "^2.4.1",
     "@types/jest": "^23.1.5",
-    "@types/react": "^16.3.13",
-    "@types/react-dom": "^16.0.5",
-    "@types/styled-components": "^4.1.12",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
-    "axios": "^0.18.1",
+    "axios": "0.24.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -64,8 +64,8 @@
     "gh-pages": "^1.2.0",
     "history": "^4.9.0",
     "ramda": "^0.26.1",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-scripts-ts": "latest",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^4.3.0",
@@ -76,7 +76,7 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
-    "styled-components": "^4.2.0",
+    "styled-components": "^5.2.1",
     "typescript": "^3.7.2"
   },
   "files": [
