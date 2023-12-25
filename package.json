@@ -22,6 +22,7 @@
     "pub": "rollup -c & npm publish"
   },
   "dependencies": {
+    "@optimize-lodash/rollup-plugin": "^4.0.4",
     "@types/lodash": "^4.14.119"
   },
   "peerDependencies": {
@@ -71,6 +72,7 @@
     "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",

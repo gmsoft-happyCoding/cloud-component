@@ -7,6 +7,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
+import filesize from 'rollup-plugin-filesize';
+import { optimizeLodashImports } from '@optimize-lodash/rollup-plugin';
 
 import pkg from './package.json';
 
@@ -52,8 +54,10 @@ export default {
       clean: true,
     }),
     commonjs(),
+    optimizeLodashImports({ appendDotJs: false }),
     copy({
       targets: [{ src: 'src/**/*.d.ts', dest: 'dist' }],
     }),
+    filesize(),
   ],
 };
